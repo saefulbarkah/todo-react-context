@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Time from "./Time";
 
 const DateCard = () => {
   const today = new Date();
@@ -11,9 +12,14 @@ const DateCard = () => {
             {today.toLocaleString("en-US", { month: "short" })}
           </span>
         </div>
-        <span className="font-bold">
-          {today.toLocaleString("en-US", { weekday: "long" })}
-        </span>
+        <div className="flex flex-col items-center">
+          <span className="font-bold">
+            {today.toLocaleString("en-US", { weekday: "long" })}
+          </span>
+          <span className="text-xl lg:text-2xl">
+            <Time />
+          </span>
+        </div>
       </div>
     </>
   );

@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <Header />
-      <div className="main overflow-x-hidden pt-10">
+      <div className="main  pt-10">
         <section className="mb-10">
           <DateCard />
         </section>

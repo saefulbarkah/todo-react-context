@@ -1,5 +1,5 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import Button from "./Button";
 
 export default function Modal({
@@ -49,7 +49,7 @@ export default function Modal({
                     {date}
                   </div>
                   <div className="mt-2">
-                    <p className="text-sm text-gray-500">{bodyModal}</p>
+                    <span className="text-sm text-gray-500">{bodyModal}</span>
                   </div>
 
                   <div className="mt-10 flex justify-center items-center gap-10">
