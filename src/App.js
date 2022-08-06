@@ -3,7 +3,7 @@ import ButtonNewTask from "./components/ButtonNewTask";
 import DateCard from "./components/DateCard";
 import Header from "./components/Header";
 import ListCard from "./components/ListCard";
-import { ModalProvider } from "./context/modalContext";
+import { ModalProvider } from "./context/ModalContext";
 
 function App() {
   useEffect(() => {

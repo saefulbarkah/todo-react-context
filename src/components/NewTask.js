@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import modalContext from "../context/modalContext";
+import ModalContext from "../context/ModalContext";
 import Button from "./Button";
 import DateNow from "./DateNow";
 const NewTask = () => {
-  const { closeModal } = useContext(modalContext);
+  const { closeModal } = useContext(ModalContext);
   return (
     <>
       <div className="flex justify-center">

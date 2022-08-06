@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 
-const modalContext = createContext();
+const ModalContext = createContext();
 
 export function ModalProvider({ children }) {
   const [isOpen, setOpen] = useState(false);
@@ -11,9 +11,9 @@ export function ModalProvider({ children }) {
     setOpen(false);
   };
   return (
-    <modalContext.Provider value={{ isOpen, openModal, closeModal }}>
+    <ModalContext.Provider value={{ isOpen, openModal, closeModal }}>
       {children}
-    </modalContext.Provider>
+    </ModalContext.Provider>
   );
 }
-export default modalContext;
+export default ModalContext;
