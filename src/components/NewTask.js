@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import ModalContext from "../context/ModalContext";
+import modalContext from "../context/modalContext";
 import TodoContext from "../context/TodoContext";
 import Button from "./Button";
 import DateNow from "./DateNow";
 const NewTask = () => {
-  const { setOpen, closeModal } = useContext(ModalContext);
+  const { setOpen, closeModal } = useContext(modalContext);
   const { AddTodos } = useContext(TodoContext);
 
   const HandleAddTodo = (e) => {

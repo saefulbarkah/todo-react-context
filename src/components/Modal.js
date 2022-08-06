@@ -1,9 +1,9 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useContext } from "react";
-import ModalContext from "../context/ModalContext";
+import modalContext from "../context/modalContext";
 
 export default function Modal({ title, children }) {
-  const { isOpen, closeModal } = useContext(ModalContext);
+  const { isOpen, closeModal } = useContext(modalContext);
   const handleClose = () => {
     closeModal();
   };

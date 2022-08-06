@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { BsPlusLg } from "react-icons/bs";
-import ModalContext from "../context/ModalContext";
+import modalContext from "../context/modalContext";
 import Button from "./Button";
 import Modal from "./Modal";
 import NewTask from "./NewTask";
 
 const ButtonNewTask = ({ show }) => {
-  const { openModal } = useContext(ModalContext);
+  const { openModal } = useContext(modalContext);
   return (
     <>
       <div className="fixed bottom-10 flex justify-center w-full z-50">
