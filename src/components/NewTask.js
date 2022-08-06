@@ -1,26 +1,52 @@
+import { useFormik } from "formik";
 import React, { useContext } from "react";
 import modalContext from "../context/modalContext";
 import TodoContext from "../context/TodoContext";
 import Button from "./Button";
 import DateNow from "./DateNow";
+
+const validate = (values) => {
+  const errors = {};
+  if (!values.title) {
+    errors.title = "Required";
+  }
+
+  if (!values.time) {
+    errors.time = "Required";
+  }
+  return errors;
+};
+
 const NewTask = () => {
   const { setOpen, closeModal } = useContext(modalContext);
   const { AddTodos } = useContext(TodoContext);
 
-  const HandleAddTodo = (e) => {
-    e.preventDefault();
-    const form = new FormData(e.target);
-    const title = form.get("title");
-    const time = form.get("time");
-    setOpen(false);
-    AddTodos(title, time);
-  };
+  const formik = useFormik({
+    initialValues: {
+      title: "",
+      time: "",
+    },
+    validate,
+    onSubmit: (values) => {
+      setOpen(false);
+      AddTodos(values.title, values.time);
+      console.log(values.title, values.time);
+    },
+  });
+
+  // const HandleAddTodo = (e) => {
+  //   e.preventDefault();
+  //   const form = new FormData(e.target);
+  //   const title = form.get("title");
+  //   const time = form.get("time");
+
+  // };
   return (
     <>
       <div className="flex justify-center">
         <DateNow></DateNow>
       </div>
-      <form className="mt-4" onSubmit={HandleAddTodo}>
+      <form className="mt-4" onSubmit={formik.handleSubmit}>
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           <div className="form-grup flex flex-col">
             <label htmlFor="" className="py-2">
@@ -28,10 +54,17 @@ const NewTask = () => {
             </label>
             <input
               type="text"
-              className="py-2 px-5 rounded-lg border-2 border-primary/50 transition duration-300 outline-primary focus:outline-4 outline-offset-1"
+              className={`py-2 px-5 rounded-lg border-2 bg-white border-primary/50 transition duration-300 outline-primary focus:outline-4 outline-offset-1 w-full ${
+                formik.errors.title ? "border-red/50 outline-red text-red" : ""
+              }`}
               placeholder="Insert Your Task"
               name="title"
+              onChange={formik.handleChange}
+              value={formik.values.title}
             />
+            {formik.errors.title ? (
+              <div className="text-red">{formik.errors.title}</div>
+            ) : null}
           </div>
           <div className="form-grup flex flex-col">
             <label htmlFor="" className="py-2">
@@ -39,9 +72,16 @@ const NewTask = () => {
             </label>
             <input
               type="time"
-              className="py-2 px-5 rounded-lg border-2 bg-white border-primary/50 transition duration-300 outline-primary focus:outline-4 outline-offset-1 w-full"
+              className={`py-2 px-5 rounded-lg border-2 bg-white border-primary/50 transition duration-300 outline-primary focus:outline-4 outline-offset-1 w-full ${
+                formik.errors.time ? "border-red/50 outline-red text-red" : ""
+              }`}
               name="time"
+              onChange={formik.handleChange}
+              value={formik.values.time}
             />
+            {formik.errors.time ? (
+              <div className="text-red">{formik.errors.time}</div>
+            ) : null}
           </div>
         </div>
         <div className="mt-10 flex justify-center items-center gap-10 text-white">
