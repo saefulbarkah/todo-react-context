@@ -4,7 +4,7 @@ import TodoContext from "../context/TodoContext";
 import Button from "./Button";
 import DateNow from "./DateNow";
 const NewTask = () => {
-  const { closeModal } = useContext(ModalContext);
+  const { setOpen, closeModal } = useContext(ModalContext);
   const { AddTodos } = useContext(TodoContext);
 
   const HandleAddTodo = (e) => {
@@ -12,6 +12,7 @@ const NewTask = () => {
     const form = new FormData(e.target);
     const title = form.get("title");
     const time = form.get("time");
+    setOpen(false);
     AddTodos(title, time);
   };
   return (
