@@ -1,20 +1,13 @@
 import React, { useEffect, useState } from "react";
 
 const Time = () => {
-  const [time, setTime] = useState();
-  const today = new Date();
-
-  const updateTime = () => {
-    const timeNow = today.toLocaleTimeString("default", {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-    setTime(timeNow);
-  };
+  const [time, setTime] = useState(new Date());
   useEffect(() => {
-    updateTime();
-  });
-  return <>{time}</>;
+    setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+  }, []);
+  return <>{time.toLocaleTimeString()}</>;
 };
 
 export default Time;

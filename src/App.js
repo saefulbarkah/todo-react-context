@@ -19,7 +19,7 @@ function App() {
             <section className="mb-10">
               <DateCard />
             </section>
-            <section className="">
+            <section className="h-full">
               <ListCard />
             </section>
             <ButtonNewTask />

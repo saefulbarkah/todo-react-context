@@ -24,7 +24,12 @@ function ListCard() {
   };
   return (
     <>
-      <div className="bg-white rounded-t-3xl shadow-md w-12/12 min-h-screen">
+      <div className="bg-white rounded-t-3xl shadow-md min-h-screen">
+        {Todos.length === 0 && (
+          <div className="flex justify-center items-center h-[400px] md:h-[700px] lg:h-[450px] text-3xl font-bold">
+            <span className="text-primary">No Task Found</span>
+          </div>
+        )}
         <div className="grid grid-rows-1 py-10 gap-20">
           {Todos.map((item, i) => (
             <div
@@ -36,10 +41,8 @@ function ListCard() {
                   {item.time} <FaClock />
                 </span>
               </div>
-              <div className="card-body flex justify-center">
-                <span className="text-2xl font-bold text-center">
-                  {item.title}
-                </span>
+              <div className="card-body text-center">
+                <span className="text-2xl font-bold">{item.title}</span>
               </div>
               <div className="card-header absolute m-auto left-0 right-0 -bottom-5 flex justify-center items-center">
                 <div className="box bg-primary py-3 px-3 rounded-xl">
