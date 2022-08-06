@@ -1,20 +1,21 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
+import modalContext from "../context/modalContext";
 import Button from "./Button";
 
-export default function Modal({
-  isOpen,
-  closeModal,
-  title,
-  bodyModal,
-  button,
-  buttonClose,
-  date,
-}) {
+export default function Modal({ title, children }) {
+  const { isOpen, closeModal } = useContext(modalContext);
+  const handleClose = () => {
+    closeModal();
+  };
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-50" onClose={closeModal}>
+        <Dialog
+          as="div"
+          className="relative z-50"
+          onClose={() => handleClose()}
+        >
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -45,26 +46,8 @@ export default function Modal({
                   >
                     {title}
                   </Dialog.Title>
-                  <div className="mt-3 text-gray-900 flex justify-center text-sm">
-                    {date}
-                  </div>
                   <div className="mt-2">
-                    <span className="text-sm text-gray-500">{bodyModal}</span>
-                  </div>
-
-                  <div className="mt-10 flex justify-center items-center gap-10">
-                    <Button
-                      addClassName="bg-red py-3 px-4 rounded-lg"
-                      isClicked={closeModal}
-                    >
-                      {buttonClose}
-                    </Button>
-                    <Button
-                      addClassName="bg-button/80 py-3 px-4 rounded-lg"
-                      isClicked={console.log("SAVE")}
-                    >
-                      {button}
-                    </Button>
+                    <span className="text-sm text-gray-500">{children}</span>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

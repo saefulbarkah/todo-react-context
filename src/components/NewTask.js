@@ -1,36 +1,54 @@
-import React, { useEffect, useState } from "react";
-import Time from "./Time";
-
+import React, { useContext, useEffect, useState } from "react";
+import modalContext from "../context/modalContext";
+import Button from "./Button";
+import DateNow from "./DateNow";
 const NewTask = () => {
-  const today = new Date();
-  const timeNow = today.toLocaleTimeString("default", {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+  const { closeModal } = useContext(modalContext);
   return (
-    <form>
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-        <div className="form-grup flex flex-col">
-          <label htmlFor="" className="py-2">
-            Title
-          </label>
-          <input
-            type="text"
-            className="py-2 px-5 rounded-lg border-2 border-primary/50 transition duration-300 outline-primary focus:outline-4 outline-offset-1"
-            placeholder="Insert Your Task"
-          />
-        </div>
-        <div className="form-grup flex flex-col">
-          <label htmlFor="" className="py-2">
-            Time
-          </label>
-          <input
-            type="time"
-            className="py-2 px-5 rounded-lg border-2 bg-white border-primary/50 transition duration-300 outline-primary focus:outline-4 outline-offset-1 w-full"
-          />
-        </div>
+    <>
+      <div className="flex justify-center">
+        <DateNow></DateNow>
       </div>
-    </form>
+      <form className="mt-4">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+          <div className="form-grup flex flex-col">
+            <label htmlFor="" className="py-2">
+              Title
+            </label>
+            <input
+              type="text"
+              className="py-2 px-5 rounded-lg border-2 border-primary/50 transition duration-300 outline-primary focus:outline-4 outline-offset-1"
+              placeholder="Insert Your Task"
+            />
+          </div>
+          <div className="form-grup flex flex-col">
+            <label htmlFor="" className="py-2">
+              Time
+            </label>
+            <input
+              type="time"
+              className="py-2 px-5 rounded-lg border-2 bg-white border-primary/50 transition duration-300 outline-primary focus:outline-4 outline-offset-1 w-full"
+            />
+          </div>
+        </div>
+        <div className="mt-10 flex justify-center items-center gap-10 text-white">
+          <Button
+            addClassName="bg-red py-3 px-4 rounded-lg"
+            isClicked={() => closeModal()}
+            isType="button"
+          >
+            Close
+          </Button>
+          <Button
+            addClassName="bg-button/80 py-3 px-4 rounded-lg"
+            isClicked={console.log("SAVE")}
+            isType="submit"
+          >
+            Save
+          </Button>
+        </div>
+      </form>
+    </>
   );
 };
 

@@ -1,20 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { BsPlusLg } from "react-icons/bs";
+import modalContext from "../context/modalContext";
 import Button from "./Button";
-import DateNow from "./DateNow";
 import Modal from "./Modal";
 import NewTask from "./NewTask";
 
 const ButtonNewTask = ({ show }) => {
-  let [isOpen, setIsOpen] = useState(false);
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  function openModal() {
-    setIsOpen(true);
-  }
+  const { openModal } = useContext(modalContext);
   return (
     <>
       <div className="fixed bottom-10 flex justify-center w-full z-50">
@@ -28,15 +20,9 @@ const ButtonNewTask = ({ show }) => {
           </div>
         </Button>
       </div>
-      <Modal
-        isOpen={isOpen}
-        closeModal={closeModal}
-        title={"Add New Task"}
-        bodyModal={<NewTask />}
-        button="Save"
-        buttonClose="Close"
-        date={<DateNow />}
-      />
+      <Modal title={"Add New Task"}>
+        <NewTask />
+      </Modal>
     </>
   );
 };
