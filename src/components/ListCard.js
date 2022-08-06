@@ -27,7 +27,10 @@ function ListCard() {
       <div className="bg-white rounded-t-3xl shadow-md w-12/12 min-h-screen">
         <div className="grid grid-rows-1 py-10 gap-20">
           {Todos.map((item, i) => (
-            <div className="card bg-red w-8/12 mx-auto rounded-xl py-24 shadow-lg relative">
+            <div
+              className="card bg-red w-8/12 mx-auto rounded-xl py-24 shadow-lg relative"
+              key={i}
+            >
               <div className="card-header absolute m-auto left-0 right-0 -top-3 flex justify-center items-center">
                 <span className="text-sm bg-primary py-3 px-3 rounded-lg flex items-center gap-1">
                   {item.time} <FaClock />

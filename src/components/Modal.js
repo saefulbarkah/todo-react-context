@@ -1,7 +1,6 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useContext } from "react";
 import ModalContext from "../context/ModalContext";
-import Button from "./Button";
 
 export default function Modal({ title, children }) {
   const { isOpen, closeModal } = useContext(ModalContext);
