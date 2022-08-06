@@ -30,7 +30,7 @@ function ListCard() {
             <span className="text-primary">No Task Found</span>
           </div>
         )}
-        <div className="grid grid-rows-1 py-10 gap-20">
+        <div className="grid grid-rows-1  gap-20 lg:grid-cols-2 py-20 pb-40">
           {Todos.map((item, i) => (
             <div
               className="card bg-red w-8/12 mx-auto rounded-xl py-24 shadow-lg relative"
