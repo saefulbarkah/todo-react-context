@@ -24,10 +24,12 @@ function ListCard() {
   };
   return (
     <>
-      <div className="bg-white rounded-t-3xl shadow-md min-h-screen">
+      <div className="bg-white dark:bg-slate-800  rounded-t-3xl shadow-md min-h-screen">
         {Todos.length === 0 && (
           <div className="flex justify-center items-center h-[400px] md:h-[700px] lg:h-[450px] text-3xl font-bold">
-            <span className="text-primary">No Task Found</span>
+            <span className="text-primary dark:text-slate-300">
+              No Task Found
+            </span>
           </div>
         )}
         <div className="grid grid-rows-1  gap-20 lg:grid-cols-2 py-20 pb-40">

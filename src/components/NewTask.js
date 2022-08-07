@@ -54,7 +54,7 @@ const NewTask = () => {
             </label>
             <input
               type="text"
-              className={`py-2 px-5 rounded-lg border-2 bg-white border-primary/50 transition duration-300 outline-primary focus:outline-4 outline-offset-1 w-full ${
+              className={`py-2 px-5 rounded-lg border-2 bg-white border-primary/30 transition duration-300 dark:bg-slate-800 outline-primary/30 focus:outline-primary  outline-none focus:outline-4 outline-offset-1 dark:text-slate-200 w-full ${
                 formik.errors.title ? "border-red/50 outline-red text-red" : ""
               }`}
               placeholder="Insert Your Task"
@@ -63,7 +63,7 @@ const NewTask = () => {
               value={formik.values.title}
             />
             {formik.errors.title ? (
-              <div className="text-red">{formik.errors.title}</div>
+              <div className="text-red py-2">{formik.errors.title}</div>
             ) : null}
           </div>
           <div className="form-grup flex flex-col">
@@ -72,7 +72,7 @@ const NewTask = () => {
             </label>
             <input
               type="time"
-              className={`py-2 px-5 rounded-lg border-2 bg-white border-primary/50 transition duration-300 outline-primary focus:outline-4 outline-offset-1 w-full ${
+              className={`py-2 px-5 rounded-lg border-2 bg-white border-primary/30 transition duration-300 dark:bg-slate-800 outline-primary/30 focus:outline-primary  outline-none focus:outline-4 outline-offset-1 dark:text-slate-200 w-full ${
                 formik.errors.time ? "border-red/50 outline-red text-red" : ""
               }`}
               name="time"
@@ -80,20 +80,20 @@ const NewTask = () => {
               value={formik.values.time}
             />
             {formik.errors.time ? (
-              <div className="text-red">{formik.errors.time}</div>
+              <div className="text-red py-2">{formik.errors.time}</div>
             ) : null}
           </div>
         </div>
         <div className="mt-10 flex justify-center items-center gap-10 text-white">
           <Button
-            addClassName="bg-red py-3 px-4 rounded-lg"
+            addClassName="bg-red dark:bg-red/30 dark:border dark:border-red py-3 px-4 rounded-lg"
             isClicked={() => closeModal()}
             isType="button"
           >
             Close
           </Button>
           <Button
-            addClassName="bg-button/80 py-3 px-4 rounded-lg"
+            addClassName="bg-button/80 py-3 px-4 rounded-lg dark:bg-button/30 dark:border dark:border-button"
             isClicked={console.log("SAVE")}
             isType="submit"
           >
