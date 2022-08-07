@@ -35,7 +35,7 @@ function ListCard() {
         <div className="grid grid-rows-1  gap-20 lg:grid-cols-2 py-20 pb-40">
           {Todos.map((item, i) => (
             <div
-              className="card bg-red w-8/12 mx-auto rounded-xl py-24 shadow-lg relative"
+              className="card bg-red dark:bg-red/50 dark:border dark:border-red w-8/12 mx-auto rounded-xl py-24 shadow-lg relative"
               key={i}
             >
               <div className="card-header absolute m-auto left-0 right-0 -top-3 flex justify-center items-center">
@@ -50,16 +50,16 @@ function ListCard() {
                 <div className="box bg-primary py-3 px-3 rounded-xl">
                   <div className="box flex gap-4">
                     <Button
-                      addClassName="text-sm bg-red py-2 px-3 rounded-lg"
+                      addClassName="text-sm bg-red py-2 px-3 rounded-lg dark:bg-red/30 dark:border dark:border-red"
                       isClicked={() => handleRemove(item.id)}
                     >
-                      <FaTrash className="" />
+                      <FaTrash className="dark:text-rose-200" />
                     </Button>
                     <Button
-                      addClassName="text-sm bg-success py-2 px-3 rounded-lg"
+                      addClassName="text-sm bg-success py-2 px-3 rounded-lg dark:bg-success/50 dark:border dark:border-success"
                       id={item.id}
                     >
-                      <FaCheck className="text-primary" />
+                      <FaCheck className=" dark:text-success" />
                     </Button>
                   </div>
                 </div>

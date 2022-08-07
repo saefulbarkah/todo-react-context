@@ -12,7 +12,7 @@ export function ThemeProvider({ children }) {
   useEffect(() => {
     theme
       ? document.body.classList.add("dark", "bg-blue-700")
-      : document.body.classList.remove("dark", "bg-blue-500");
+      : document.body.classList.remove("dark", "bg-blue-700");
   });
   return (
     <>
