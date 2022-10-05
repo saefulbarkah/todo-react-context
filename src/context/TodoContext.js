@@ -15,7 +15,10 @@ export function TodoProvider({ children }) {
 
   const AddTodos = (title, time) => {
     const id = Todos.length + 1;
-    setTodo((prevState) => [...prevState, { id, title, time }]);
+    setTodo((prevState) => [
+      ...prevState,
+      { id, title, time, isComplete: false },
+    ]);
     MySwal.fire({
       icon: "success",
       title: "Success",
@@ -33,10 +36,23 @@ export function TodoProvider({ children }) {
       text: "Remove task successfully",
     });
   };
+
+  const completeTodo = (id, completed) => {
+    setTodo(
+      Todos.map((item) => {
+        if (item.id === id) {
+          return { ...item, isComplete: completed };
+        }
+      })
+    );
+    console.log(Todos);
+  };
   localStorage.setItem("todos", JSON.stringify(Todos));
   return (
     <>
-      <TodoContext.Provider value={{ Todos, AddTodos, RemoveTodos }}>
+      <TodoContext.Provider
+        value={{ Todos, AddTodos, RemoveTodos, completeTodo }}
+      >
         {children}
       </TodoContext.Provider>
     </>
