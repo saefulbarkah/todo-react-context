@@ -43,6 +43,7 @@ export function TodoProvider({ children }) {
         if (item.id === id) {
           return { ...item, isComplete: completed };
         }
+        return item;
       })
     );
     console.log(Todos);
