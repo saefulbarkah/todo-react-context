@@ -48,11 +48,24 @@ export function TodoProvider({ children }) {
     );
     console.log(Todos);
   };
+
+  const unCompleteTodo = (id, completed) => {
+    setTodo(
+      Todos.map((item) => {
+        if (item.id === id) {
+          return { ...item, isComplete: completed };
+        }
+        return item;
+      })
+    );
+    console.log(Todos);
+  };
+
   localStorage.setItem("todos", JSON.stringify(Todos));
   return (
     <>
       <TodoContext.Provider
-        value={{ Todos, AddTodos, RemoveTodos, completeTodo }}
+        value={{ Todos, AddTodos, RemoveTodos, completeTodo, unCompleteTodo }}
       >
         {children}
       </TodoContext.Provider>
